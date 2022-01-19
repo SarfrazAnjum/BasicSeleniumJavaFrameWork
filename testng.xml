@@ -1,0 +1,11 @@
+<suite name="Suite">
+    <listeners>
+        <listener class-name="utils.TestListenersImplementation"/>
+    </listeners>
+    <test name="Test">
+        <classes>
+            <class name="MotorcycleE2ETest"/>
+        </classes>
+    </test>
+    <!--  Test  -->
+</suite>
