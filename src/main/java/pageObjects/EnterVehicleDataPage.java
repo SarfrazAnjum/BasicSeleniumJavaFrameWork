@@ -5,10 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.HashMap;
 import java.util.List;
-
-import static base.ObjectsRepo.common;
-import static base.ObjectsRepo.driver;
 
 public class EnterVehicleDataPage extends BaseTest {
 
@@ -57,15 +55,15 @@ public class EnterVehicleDataPage extends BaseTest {
 
     }
 
-    public void enterVehicleData() throws Exception {
-        common.selectFromDropDown(makeDropDown, "Toyota");
-        common.selectFromDropDown(modelDropDown, "Scooter");
-        textCylinderCapacity.sendKeys("200");
-        textEnginePerformance.sendKeys("100");
-        dateManufacture.sendKeys("01/01/2001");
-        common.selectFromDropDown(seatNoDropDown, "2");
-        textListPrice.sendKeys("1500");
-        textAnnualMiles.sendKeys("50000");
+    public void enterVehicleData(HashMap<String, String > testData) throws Exception {
+        common.selectFromDropDown(makeDropDown, testData.get("Vehicle_Make"));
+        common.selectFromDropDown(modelDropDown, testData.get("Vehicle_Model"));
+        textCylinderCapacity.sendKeys(testData.get("Vehicle_CylinderCapacity"));
+        textEnginePerformance.sendKeys(testData.get("Vehicle_Enging Performance"));
+        dateManufacture.sendKeys(testData.get("Vehicle_Date of Manufacture"));
+        common.selectFromDropDown(seatNoDropDown, testData.get("Vehicle_No of Seats_motorcycle"));
+        textListPrice.sendKeys(testData.get("Vehicle_List Price"));
+        textAnnualMiles.sendKeys(testData.get("Vehicle_Annual Mileage"));
 
 
     }

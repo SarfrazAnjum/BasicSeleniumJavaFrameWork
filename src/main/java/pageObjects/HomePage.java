@@ -1,7 +1,6 @@
 package pageObjects;
 
 import base.BaseTest;
-import com.aventstack.extentreports.Status;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;

@@ -1,6 +1,5 @@
 package base;
 
-import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -8,7 +7,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import pageObjects.*;
-import utils.ExtentSetup;
+import utils.Log;
 import utils.ReadProperties;
 
 import java.time.Duration;
@@ -24,6 +23,7 @@ public class BaseTest extends ObjectsRepo{
 
 
         if(browser.equalsIgnoreCase("chrome")) {
+            Log.info("Setting up browser "+browser);
             WebDriverManager.chromedriver().setup();
             driver = new ChromeDriver();
         } else if(browser.equalsIgnoreCase("firefox")) {
@@ -33,7 +33,7 @@ public class BaseTest extends ObjectsRepo{
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
 
-
+        Log.info("Navigating to Url "+url);
         driver.get(url);
 
     }

@@ -3,22 +3,27 @@ import com.aventstack.extentreports.Status;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.util.HashMap;
+
 public class MotorcycleE2ETest extends BaseTest {
 
-    @Test
-    public void motorcycleInsurance() throws Exception {
 
-        test.log(Status.INFO,"navigating to home page and clicked on motorcycle page");
+
+    @Test(dataProvider = "vehData",  dataProviderClass = DataProviders.class)
+    public void motorcycleInsurance(Object Obj1) throws Exception {
+        HashMap<String, String> testData = (HashMap<String, String>) Obj1;
+
+        test.log(Status.INFO,"Test data used for execution is "+testData);
         home.clickOnMotorcycleLink();
 
         test.log(Status.INFO,"Entering vehicle information");
-        vehicleData.enterVehicleData();
+        vehicleData.enterVehicleData(testData);
 
         test.log(Status.INFO,"next>>>");
         vehicleData.clickNext();
 
         test.log(Status.INFO,"Enterring Insurant data");
-        insurant.enterInsurantData();
+        insurant.enterInsurantData(testData);
 
         test.log(Status.INFO,"next>>>");
         insurant.clickNext();
@@ -47,4 +52,5 @@ public class MotorcycleE2ETest extends BaseTest {
 
 
     }
+
 }

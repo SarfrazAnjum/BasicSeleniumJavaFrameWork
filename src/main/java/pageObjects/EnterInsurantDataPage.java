@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class EnterInsurantDataPage extends BaseTest {
@@ -51,14 +52,14 @@ public class EnterInsurantDataPage extends BaseTest {
     @FindBy(id="nextenterproductdata")
     WebElement buttonNext;
 
-    public void enterInsurantData() throws Exception {
-        textFirstName.sendKeys("James");
-        textLastName.sendKeys("Webb");
-        dateBirthField.sendKeys("01/01/1970");
-        common.selectFromRadioButton(radioButtonsGender, "male");
+    public void enterInsurantData(HashMap<String, String> testData) throws Exception {
+        textFirstName.sendKeys(testData.get("Insurant_FirstName"));
+        textLastName.sendKeys(testData.get("Insurant_LastName"));
+        dateBirthField.sendKeys(testData.get("Insurant_birthdate").toString());
+        common.selectFromRadioButton(radioButtonsGender, testData.get("Insurant_gender"));
         textStreetAddress.sendKeys("100 Pennsylvania Ave NW");
-        common.selectFromDropDown(selectCountry, "United States");
-        textZipcode.sendKeys("20001");
+        common.selectFromDropDown(selectCountry, testData.get("Insurant_country"));
+        textZipcode.sendKeys(testData.get("Insurant_zipcode"));
         textCity.sendKeys("D.C.");
         common.selectFromDropDown(selectOccupation, "Employee");
         common.selectFromCheckBoxes(checkBoxHobbies, "Speeding,Other,Skydiving,Bungee Jumping,Cliff Diving");
